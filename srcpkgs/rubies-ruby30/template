@@ -1,0 +1,46 @@
+# Template file for 'rubies-rubyX'
+_ruby_abiver=3.0.0
+_ruby_dir=3.0
+
+pkgname=rubies-ruby30
+version=3.0.1
+revision=1
+build_style=gnu-configure
+configure_args="--enable-shared --prefix=/opt/rubies/${_ruby_dir} PKG_CONFIG=/usr/bin/pkg-config
+ --bindir=/opt/rubies/${_ruby_dir}/bin/ --libdir=/opt/rubies/${_ruby_dir}/lib/ --mandir=/opt/rubies/${_ruby_dir}/share/man/"
+make_build_args="all capi"
+hostmakedepends="pkg-config bison groff"
+makedepends="zlib-devel readline-devel libffi-devel openssl-devel gdbm-devel libyaml-devel gmp-devel"
+checkdepends="tzdata"
+depends="gmp-devel"
+short_desc="Ruby programming language"
+homepage="http://www.ruby-lang.org/en/"
+maintainer="msz@ <msz@msz.katowice.pl>"
+license="Ruby, BSD-2-Clause"
+distfiles="https://cache.ruby-lang.org/pub/ruby/${version%.*}/ruby-${version}.tar.gz"
+checksum=369825db2199f6aeef16b408df6a04ebaddb664fb9af0ec8c686b0ce7ab77727
+wrksrc="ruby-${version}"
+
+if [ "$CROSS_BUILD" ]; then
+	hostmakedepends+=" ruby"
+fi
+
+pre_build() {
+	# Force getaddrinfo detection.
+	#sed -e 's,\(checking_for("wide getaddrinfo") {try_\)run,\1link,' -i ext/socket/extconf.rb
+	# Hack for cross-builds.
+	touch ext/ripper/check
+}
+
+post_install() {
+	# Remove references to the cross compiler
+	if [ "$CROSS_BUILD" ]; then
+		sed -e "s,${XBPS_CROSS_TRIPLET}-,,g" -i ${DESTDIR}/opt/rubies/${_ruby_dir}/lib/ruby/${_ruby_abiver}/*/rbconfig.rb
+	fi
+	# Replace reference to the install(1) wrapper
+	sed -e "s,${XBPS_WRAPPERDIR},/usr/bin,g" -i \
+		${DESTDIR}/opt/rubies/${_ruby_dir}/lib/ruby/${_ruby_abiver}/*/rbconfig.rb
+	# Remove references to hardening -specs.
+	sed -e "s|\(-specs=.*hardened-ld\)||g" -e "s|\(-specs=.*hardened-cc1\)||g" -i \
+		${DESTDIR}/opt/rubies/${_ruby_dir}/lib/ruby/${_ruby_abiver}/*/rbconfig.rb
+}

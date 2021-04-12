@@ -1,0 +1,22 @@
+# Template file for 'SOGo'
+pkgname=SOGo
+version=5.1.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="gnustep-make tar"
+makedepends="libxml2-devel openssl-devel libldap-devel postgresql-libs-devel libmariadbclient-devel libmemcached-devel libcurl-devel gnustep-base-devel libsodium-devel libzip-devel SOPE"
+short_desc="SOGo collaborative software"
+homepage="https://sogo.nu"
+maintainer="msz <msz@msz.katowice.pl>"
+license="GPL v2/LGPL v2"
+distfiles="https://packages.inverse.ca/SOGo/sources/${pkgname}-${version}.tar.gz"
+checksum=dd4780be9aaa4c197e4c489c7a13280401c11fc4483b0a5da505cb6c8f1f5ca3
+
+do_configure() {
+    ./configure
+}
+
+post_install() {
+    mkdir ${DESTDIR}/usr/bin
+    mv ${DESTDIR}/usr/sbin/* ${DESTDIR}/usr/bin
+}

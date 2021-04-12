@@ -1,0 +1,20 @@
+# Template file for 'SOPE'
+pkgname=SOPE
+version=5.1.0
+revision=1
+wrksrc="${pkgname}"
+build_style=gnu-configure
+configure_args="--with-gnustep"
+hostmakedepends="gnustep-make tar"
+makedepends="libxml2-devel openssl-devel libldap-devel postgresql-libs-devel libmariadbclient-devel libmemcached-devel libcurl-devel gnustep-base-devel"
+short_desc="application server used by SOGo"
+homepage="https://sogo.nu"
+maintainer="msz <msz@msz.katowice.pl>"
+license="GPL v2/LGPL v2"
+distfiles="https://packages.inverse.ca/SOGo/sources/${pkgname}-${version}.tar.gz"
+checksum=9c772a0965eddfcb571835267032c36dd16fa6752f3d8699362bc771914920c9
+
+
+do_configure() {
+    ./configure --with-gnustep
+}

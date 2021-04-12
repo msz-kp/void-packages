@@ -1,0 +1,21 @@
+# Template file for 'chruby'
+
+pkgname=chruby
+version=0.3.9
+revision=2
+build_style=gnu-makefile
+short_desc="Changes the current Ruby "
+homepage="https://github.com/postmodern/chruby"
+maintainer="msz <msz@msz.katowice.pl>"
+license="MIT License "
+distfiles="https://github.com/postmodern/chruby/archive/v${version}.tar.gz"
+checksum=7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd
+
+do_install() {
+  make install PREFIX=${DESTDIR}/usr
+}
+
+# does not work in lightdm
+#post_install() {
+#  vinstall ${FILESDIR}/profile.sh 644 etc/profile.d ${pkgname}.sh
+#}

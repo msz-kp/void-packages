@@ -1,0 +1,10 @@
+# Template file for 'ruby-ruby-dbus'
+pkgname=ruby-ruby-dbus
+version=0.16.0
+revision=4
+build_style=gem
+short_desc="Ruby D-Bus is a pure Ruby library for writing clients and services for D-Bus"
+maintainer="msz <msz@msz.katowice.pl>"
+license="LGPL"
+homepage="https://github.com/mvidner/ruby-dbus"
+checksum=9ab15ee915c49a48aca1c4c788fe7a458aa77410e814c17024b62440d703e11e

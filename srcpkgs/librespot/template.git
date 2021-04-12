@@ -1,0 +1,17 @@
+# Template file for 'librespot'
+pkgname=librespot
+version=0.1.3.20210212
+revision=1
+_githash=f483075b2cde3e443929873e5abb2f072bac48a3
+wrksrc="${pkgname}-${_githash}"
+build_style=cargo
+configure_args="--no-default-features --features alsa-backend,rodiojack-backend"
+hostmakedepends="pkg-config"
+makedepends="alsa-lib-devel jack-devel"
+short_desc="librespot is an open source client library for Spotify"
+maintainer="msz <msz@msz.katowice.pl>"
+license="MIT"
+homepage="https://github.com/librespot-org/librespot"
+#distfiles="${homepage}/archive/v${version}.tar.gz"
+distfiles="https://github.com/librespot-org/librespot/archive/${_githash}.tar.gz"
+checksum=d429a0788997a512c1aa38dbf70985150231b7eebd1ba1d7a50c5379b4064b4e
