@@ -1,0 +1,19 @@
+# Template file for 'openclonk'
+pkgname=openclonk
+version=8.1
+revision=3
+build_style=cmake
+makedepends="zlib-devel libpng-devel libjpeg-turbo-devel freetype-devel glew-devel freealut-devel libogg-devel libvorbis-devel qt5-devel
+ MesaLib-devel SDL2-devel libopenal-devel miniupnpc-devel libXrandr-devel
+ SDL2_mixer-devel readline-devel"
+short_desc="Free multiplayer action game in which you control clonks, small but witty and nimble humanoid beings."
+wrksrc="openclonk-release-${version}-src"
+maintainer="msz <msz@msz.katowice.pl>"
+license="LGPL"
+homepage="https://www.openclonk.org/"
+distfiles="https://www.openclonk.org//builds/release/8.1/openclonk-${version}-src.tar.bz2"
+checksum=337677f25457e7137eac7818adb4ad02992d562593386c19b885738aaec4b346
+
+post_install() {
+	mv ${DESTDIR}/usr/games/openclonk ${DESTDIR}/usr/bin/openclonk
+}

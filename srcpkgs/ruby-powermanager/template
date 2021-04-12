@@ -1,0 +1,15 @@
+# Template file for 'powermanager'
+pkgname=ruby-powermanager
+version=0.1.3
+_githash=86591980cf12fcc7421c7f40118dc60451d516e2
+wrksrc="powermanager-${_githash}"
+revision=1
+build_style=gemspec
+depends="ruby-ruby-dbus"
+makedepends="libXScrnSaver-devel ruby-devel"
+short_desc="Ruby PowerManager"
+maintainer="msz <msz@msz.katowice.pl>"
+license="WTFPL"
+homepage="https://msz.katowice.pl"
+distfiles="https://github.com/msz-kp/powermanager/archive/${_githash}.tar.gz"
+checksum=809d64f206063d2287507113043e0230d3e96a83e35f5931cd679bed1b4641db

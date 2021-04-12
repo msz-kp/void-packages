@@ -1,13 +1,14 @@
 # Template file for 'xf86-video-qxl'
 pkgname=xf86-video-qxl
 version=0.1.5
-revision=2
+revision=3
 build_style=gnu-configure
+configure_args="--enable-xspice"
 hostmakedepends="automake m4 xorg-util-macros libtool pkg-config"
-makedepends="xorg-server-devel spice-protocol xorgproto"
+makedepends="xorg-server-devel spice-protocol spice-devel xorgproto"
 depends="virtual?xserver-abi-video-24_1"
 short_desc="Xorg QXL video driver"
-maintainer="Andrew Benson <abenson+void@gmail.com>"
+maintainer="msz <msz@msz.katowice.pl>"
 license="MIT"
 homepage="https://www.x.org"
 distfiles="$XORG_SITE/driver/${pkgname}-${version}.tar.bz2"

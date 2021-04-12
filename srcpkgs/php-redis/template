@@ -1,0 +1,27 @@
+# Template file for 'php-redis'
+pkgname=php-redis
+version=5.3.2
+revision=1
+build_style=gnu-configure
+hostmakedepends="php-devel autoconf"
+makedepends="php-devel"
+depends="php"
+short_desc="PHP extension for interfacing with Redis"
+maintainer="msz <msz@msz.katowice.pl>"
+license="PHP"
+homepage="https://pecl.php.net/package/redis"
+distfiles="https://pecl.php.net/get/redis-$version.tgz"
+checksum=f4e92de628abcb917cdc810df045ca3fa0f2af34673eaa2a03350e3c5c5fdab1
+wrksrc="redis-$version"
+
+pre_configure() {
+	phpize
+}
+
+pre_install() {
+	make_install_args="INSTALL_ROOT=$DESTDIR"
+}
+
+# post_install() {
+# 	rm -r $DESTDIR/usr/include
+# }

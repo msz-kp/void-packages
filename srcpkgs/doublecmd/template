@@ -1,0 +1,35 @@
+# Template file for 'doublecmd'
+pkgname=doublecmd
+version=0.9.10
+revision=1
+nopie=yes
+hostmakedepends="lazarus which gtk+-devel glib-devel gvfs-devel pkg-config"
+#makedepends=""
+#depends=""
+short_desc="Cross-platform, twin-panel file manager"
+maintainer="msz <msz@msz.katowice.pl>"
+license="GPL"
+homepage="http://doublecmd.sourceforge.net/"
+nocross="yes"
+archs="x86_64"
+shlib_requires="libgmodule-2.0.so.0 libz.so.1 libmount.so.1 libresolv.so.2 libffi.so.7 libblkid.so.1 librt.so.1"
+distfiles="https://downloads.sourceforge.net/project/${pkgname}/Double%20Commander%20Source/${pkgname}-${version}-src.tar.gz"
+checksum=ba7a064245219086d81884d954ab302460aa905adbae10bba172af8c0eca9441
+
+
+do_build() {
+  export CPU_TARGET="x86_64"
+  export lazpath="/usr/lib/lazarus"
+  find ./ -type f -name "build.sh" -exec sed -i 's#$lazbuild #$lazbuild --lazarusdir=/usr/lib/lazarus #g' {} \;
+  ./build.sh beta
+  cd plugins/wfx/gvfs/src
+  make
+}
+
+do_install() {
+  ./install/linux/install.sh --install-prefix="$XBPS_DESTDIR/${pkgname}-${version}"
+  mv "$XBPS_DESTDIR/${pkgname}-${version}/usr/lib64" "$XBPS_DESTDIR/${pkgname}-${version}/usr/lib"
+  mkdir "$XBPS_DESTDIR/${pkgname}-${version}/usr/lib/doublecmd/plugins/wfx/gvfs"
+  cp plugins/wfx/gvfs/lib/gvfs.wfx "$XBPS_DESTDIR/${pkgname}-${version}/usr/lib/doublecmd/plugins/wfx/gvfs"
+  chmod 644 "$XBPS_DESTDIR/${pkgname}-${version}/usr/lib/doublecmd/plugins/wfx/gvfs/gvfs.wfx"
+}

@@ -1,0 +1,15 @@
+# Template file for 'qnapi'
+pkgname=qnapi
+version=0.2.3
+revision=2
+build_style=qmake
+configure_args="CONFIG+=no_gui"
+hostmakedepends="qt5-qmake pkg-config qt5-devel libmediainfo-devel"
+makedepends="libmediainfo-devel"
+short_desc="Multi language subtitles downloader"
+maintainer="msz <msz@msz.katowice.pl>"
+license="GPL-2"
+homepage="https://qnapi.github.io/"
+distfiles="https://github.com/QNapi/qnapi/releases/download/${version}/${pkgname}-${version}.tar.gz"
+checksum=8debb6862e96e52e4060131b314d9b887051a646a4a57c87c0287f2655357046
+nopie=yes

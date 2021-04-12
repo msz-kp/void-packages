@@ -1,0 +1,12 @@
+# Template file for 'ruby-install'
+pkgname=ruby-install
+version=0.8.1
+revision=2
+build_style=gnu-makefile
+depends="zlib-devel readline-devel libffi-devel openssl-devel gdbm-devel libyaml-devel pkg-config gcc make"
+short_desc="Installs Ruby, JRuby, Rubinius, TruffleRuby (native / GraalVM), or mruby."
+homepage="https://github.com/postmodern/ruby-install"
+maintainer="msz <msz@msz.katowice.pl>"
+license="MIT License "
+distfiles="https://github.com/postmodern/ruby-install/archive/v${version}.tar.gz"
+checksum=d96fce7a4df70ca7a367400fbe035ff5b518408fc55924966743abf66ead7771
