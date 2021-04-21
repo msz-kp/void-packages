@@ -1,8 +1,8 @@
 # Template file for 'librespot'
 pkgname=librespot
-version=0.1.6.20210212
+version=0.1.6.20210419
 revision=1
-_githash=f483075b2cde3e443929873e5abb2f072bac48a3
+_githash=7226bfd55ab72fb3d35a35f3bc38582975a8bec1
 wrksrc="${pkgname}-${_githash}"
 build_style=cargo
 configure_args="--no-default-features --features rodio-backend,alsa-backend,rodiojack-backend"
@@ -14,7 +14,7 @@ license="MIT"
 homepage="https://github.com/librespot-org/librespot"
 #distfiles="${homepage}/archive/v${version}.tar.gz"
 distfiles="https://github.com/librespot-org/librespot/archive/${_githash}.tar.gz"
-checksum=d429a0788997a512c1aa38dbf70985150231b7eebd1ba1d7a50c5379b4064b4e
+checksum=b5707ea4392de4103444fefc6901538a8a177e7d682adac188db034e80b652e7
 
 build_options="avahi"
 

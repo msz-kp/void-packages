@@ -1,7 +1,7 @@
 # Template file for 'SOGo'
 pkgname=SOGo
 version=5.1.0
-revision=1
+revision=2
 build_style=gnu-configure
 hostmakedepends="gnustep-make tar"
 makedepends="libxml2-devel openssl-devel libldap-devel postgresql-libs-devel libmariadbclient-devel libmemcached-devel libcurl-devel gnustep-base-devel libsodium-devel libzip-devel SOPE"

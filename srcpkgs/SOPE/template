@@ -1,7 +1,7 @@
 # Template file for 'SOPE'
 pkgname=SOPE
 version=5.1.0
-revision=1
+revision=2
 wrksrc="${pkgname}"
 build_style=gnu-configure
 configure_args="--with-gnustep"
