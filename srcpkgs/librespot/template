@@ -1,9 +1,7 @@
 # Template file for 'librespot'
 pkgname=librespot
-version=0.1.6.20210419
+version=0.2.0
 revision=1
-_githash=7226bfd55ab72fb3d35a35f3bc38582975a8bec1
-wrksrc="${pkgname}-${_githash}"
 build_style=cargo
 configure_args="--no-default-features --features rodio-backend,alsa-backend,rodiojack-backend"
 hostmakedepends="pkg-config"
@@ -12,9 +10,8 @@ short_desc="librespot is an open source client library for Spotify"
 maintainer="msz <msz@msz.katowice.pl>"
 license="MIT"
 homepage="https://github.com/librespot-org/librespot"
-#distfiles="${homepage}/archive/v${version}.tar.gz"
-distfiles="https://github.com/librespot-org/librespot/archive/${_githash}.tar.gz"
-checksum=b5707ea4392de4103444fefc6901538a8a177e7d682adac188db034e80b652e7
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=cd6e7ae63583584598dead53b5e8e4077ab37df6e3b59c2a7416459b9a649fc3
 
 build_options="avahi"
 
